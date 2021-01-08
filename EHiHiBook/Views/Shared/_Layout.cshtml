@@ -1,0 +1,172 @@
+﻿@using EHiHiBook.Models.Home;
+
+<!DOCTYPE html>
+
+<style>
+    .copyright .copyright-right {
+        text-align: right;
+    }
+
+    .copyright .list-social {
+        float: right;
+        margin-top: -10px;
+    }
+
+        .copyright .list-social > li {
+            display: inline;
+            float: left;
+            margin: 2px 5px;
+        }
+
+            .copyright .list-social > li > a {
+                display: block;
+                width: 30px;
+                height: 30px;
+                position: relative;
+                background: #ffffff;
+                border: 1px solid #ccc;
+                -webkit-border-radius: 100%;
+                -moz-border-radius: 100%;
+                -o-border-radius: 100%;
+                border-radius: 100%;
+                font-size: 20px;
+                color: #333333;
+            }
+
+                .copyright .list-social > li > a:hover {
+                    background: #333333;
+                    border: 1px solid #333333;
+                    font-size: 20px;
+                    color: #ffffff;
+                }
+</style>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/MyMainLayout.css" rel="stylesheet" />
+
+    <script src="~/Scripts/scripts.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <img src="~/Content/images/hihi book logo.png" alt="" />
+            </div>
+            <div class="navbar-collapse collapse">
+                <form class="navbar-form navbar-left" action="/action_page.php">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @if (Session["cart"] != null)
+                            {
+                                foreach (Item item in (List<Item>)Session["cart"])
+                                {
+                                    <li>
+                                        <a href="@Url.Action("RemoveFromCart", "Home", new { bookId=item.Book.BookID})">@item.Book.BookName (@item.Quantity) <i class="fa fa-times"></i></a>
+                                    </li>
+                                }
+                            }
+                            <li class="divider"></li>
+                            <li><a href="@Url.Action("Checkout","Home")">Checkout</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/Account/LogIn"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+                    <li><a href="/Account/Register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+
+                    <li><a href="@Url.Action("LogOut","Home")"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+
+
+                    @*  <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div style="margin-bottom:20px;margin-top:20px;" class="container">
+            <ul class="nav navbar-nav" style="text-align:center;">
+                <li><a href="/Home/Index">Home</a></li>
+                <li class="dropdown">
+                    <a aria-expanded="true" style="border-radius:initial;" href="#" data-toggle="dropdown" class="dropdown-toggle">Book Store <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Novel</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Science</a></li>
+                        <li><a href="#">Romance</a></li>
+                        <li><a href="#">Economics</a></li>
+                        <li><a href="#">Business & Finance</a></li>
+                        <li><a href="#">Fiction</a></li>
+                        <li><a href="#">Dictionaries & Languages</a></li>
+                        <li><a href="#">Children's Books</a></li>
+                        <li><a href="#">Comic Manga</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="col-md-3">
+                <h3>ABOUT US</h3>
+                <p>	Open : 9:00 - 22:00</p>
+                <p>	hihibookstore@gmail.com</p>
+                <p>	0123 456 789</p>
+                <p>	826 Su Van Hanh, w.13, d.10, HCM</p>
+                <br />
+                <p>&copy; @DateTime.Now.Year - HiHi Book Store</p>
+            </div>
+
+            <div class="col-md-3">
+                <h3>SERVICE</h3>
+                <p>	Terms of use</p>
+                <p>	Privacy Policy</p>
+                <p>	Contact</p>
+            </div>
+            <div class="col-md-3">
+                <h3>SUPPORT</h3>
+                <p>	Log in</p>
+                <p>	Create a new account</p>
+                <p>	Return - refund policy</p>
+                <p>	Payment methods</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="col-md-6 col-sm-6 copyright-right">
+                    <ul class="list-unstyled list-social">
+                        <li><a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <img src="~/Content/images/hihi book logo.png" alt="" />
+            </div>
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

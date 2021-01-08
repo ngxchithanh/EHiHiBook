@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c32e89c8170e4ecab4dd08d5b2a3eeb6" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="SachModel.Book" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.Cart" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.CartStatu" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.Category" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.Comment" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.Membership" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.MembershipType" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.OrderDetail" Width="1.5" PointX="9.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.Order" Width="1.5" PointX="7.5" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.Publisher" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.ShippingDetail" Width="1.5" PointX="9.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.Supplier" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.User" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <AssociationConnector Association="SachModel.FK__Book__CategoryID__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__Book__PublisherI__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__Book__SupplierID__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__Comment__BookID__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__OrderDeta__BookI__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__Cart__CartStatus__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__Cart__Membership__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__Comment__Members__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__Membershi__Membe__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__ShippingD__Membe__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__Users__Membershi__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__OrderDeta__Order__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__Orders__UserID__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__ShippingD__Order__59FA5E80" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

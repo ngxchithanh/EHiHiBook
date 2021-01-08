@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookID" />
+    </Key>
+    <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Author" Type="nvarchar" MaxLength="50" />
+    <Property Name="Descriptions" Type="nvarchar" MaxLength="500" />
+    <Property Name="Images" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="PublisherID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="IsFeatured" Type="bit" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartID" />
+    </Key>
+    <Property Name="CartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookID" Type="int" />
+    <Property Name="MembershipID" Type="int" />
+    <Property Name="CartStatusID" Type="int" />
+  </EntityType>
+  <EntityType Name="CartStatus">
+    <Key>
+      <PropertyRef Name="CartStatusID" />
+    </Key>
+    <Property Name="CartStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CartStatus" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CateoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="IsFeatured" Type="bit" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar" MaxLength="255" />
+    <Property Name="MembershipID" Type="int" />
+    <Property Name="BookID" Type="int" />
+  </EntityType>
+  <EntityType Name="Membership">
+    <Key>
+      <PropertyRef Name="MembershipID" />
+    </Key>
+    <Property Name="MembershipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pass" Type="nvarchar" MaxLength="100" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Addr1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Addr2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="10" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="Questions" Type="nvarchar" MaxLength="500" />
+    <Property Name="Answers" Type="nvarchar" MaxLength="500" />
+    <Property Name="MembershipTypeID" Type="int" />
+    <Property Name="CumulativePoints" Type="int" />
+  </EntityType>
+  <EntityType Name="MembershipType">
+    <Key>
+      <PropertyRef Name="MembershipTypeID" />
+    </Key>
+    <Property Name="MembershipTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MembershipTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookID" Type="int" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="BookName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PurchaseDay" Type="datetime" />
+    <Property Name="OrderStates" Type="bit" />
+    <Property Name="DeliveryDay" Type="datetime" />
+    <Property Name="Paid" Type="bit" />
+    <Property Name="AddrUser" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Publisher">
+    <Key>
+      <PropertyRef Name="PublisherID" />
+    </Key>
+    <Property Name="PublisherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PublisherName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Info" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ShippingDetail">
+    <Key>
+      <PropertyRef Name="ShippingDetailID" />
+    </Key>
+    <Property Name="ShippingDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MembershipID" Type="int" />
+    <Property Name="Addr" Type="nvarchar" MaxLength="255" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PaymentType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupplierName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Addr" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pass" Type="nvarchar" MaxLength="100" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Addr" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="10" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="NgaySinh" Type="datetime" />
+    <Property Name="MembershipID" Type="int" />
+    <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__Book__CategoryID__3C69FB99">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Book__PublisherI__3D5E1FD2">
+    <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="PublisherID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="PublisherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Book__SupplierID__3E52440B">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="SupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart__CartStatus__5629CD9C">
+    <End Role="CartStatus" Type="Self.CartStatus" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CartStatus">
+        <PropertyRef Name="CartStatusID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="CartStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart__Membership__5535A963">
+    <End Role="Membership" Type="Self.Membership" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membership">
+        <PropertyRef Name="MembershipID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="MembershipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__BookID__4F7CD00D">
+    <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__Members__5070F446">
+    <End Role="Membership" Type="Self.Membership" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membership">
+        <PropertyRef Name="MembershipID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="MembershipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Membershi__Membe__4316F928">
+    <End Role="MembershipType" Type="Self.MembershipType" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Membership" Type="Self.Membership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MembershipType">
+        <PropertyRef Name="MembershipTypeID" />
+      </Principal>
+      <Dependent Role="Membership">
+        <PropertyRef Name="MembershipTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__BookI__4BAC3F29">
+    <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__4CA06362">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__UserID__48CFD27E">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShippingD__Membe__59063A47">
+    <End Role="Membership" Type="Self.Membership" Multiplicity="0..1" />
+    <End Role="ShippingDetail" Type="Self.ShippingDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membership">
+        <PropertyRef Name="MembershipID" />
+      </Principal>
+      <Dependent Role="ShippingDetail">
+        <PropertyRef Name="MembershipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShippingD__Order__59FA5E80">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+    <End Role="ShippingDetail" Type="Self.ShippingDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="ShippingDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__Membershi__45F365D3">
+    <End Role="Membership" Type="Self.Membership" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membership">
+        <PropertyRef Name="MembershipID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="MembershipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SachModelStoreContainer">
+    <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CartStatus" EntityType="Self.CartStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Membership" EntityType="Self.Membership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MembershipType" EntityType="Self.MembershipType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShippingDetail" EntityType="Self.ShippingDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Book__CategoryID__3C69FB99" Association="Self.FK__Book__CategoryID__3C69FB99">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Book__PublisherI__3D5E1FD2" Association="Self.FK__Book__PublisherI__3D5E1FD2">
+      <End Role="Publisher" EntitySet="Publisher" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Book__SupplierID__3E52440B" Association="Self.FK__Book__SupplierID__3E52440B">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart__CartStatus__5629CD9C" Association="Self.FK__Cart__CartStatus__5629CD9C">
+      <End Role="CartStatus" EntitySet="CartStatus" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart__Membership__5535A963" Association="Self.FK__Cart__Membership__5535A963">
+      <End Role="Membership" EntitySet="Membership" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__BookID__4F7CD00D" Association="Self.FK__Comment__BookID__4F7CD00D">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__Members__5070F446" Association="Self.FK__Comment__Members__5070F446">
+      <End Role="Membership" EntitySet="Membership" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Membershi__Membe__4316F928" Association="Self.FK__Membershi__Membe__4316F928">
+      <End Role="MembershipType" EntitySet="MembershipType" />
+      <End Role="Membership" EntitySet="Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__BookI__4BAC3F29" Association="Self.FK__OrderDeta__BookI__4BAC3F29">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__4CA06362" Association="Self.FK__OrderDeta__Order__4CA06362">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__UserID__48CFD27E" Association="Self.FK__Orders__UserID__48CFD27E">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShippingD__Membe__59063A47" Association="Self.FK__ShippingD__Membe__59063A47">
+      <End Role="Membership" EntitySet="Membership" />
+      <End Role="ShippingDetail" EntitySet="ShippingDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShippingD__Order__59FA5E80" Association="Self.FK__ShippingD__Order__59FA5E80">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="ShippingDetail" EntitySet="ShippingDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__Membershi__45F365D3" Association="Self.FK__Users__Membershi__45F365D3">
+      <End Role="Membership" EntitySet="Membership" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

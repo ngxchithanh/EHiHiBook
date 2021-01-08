@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "BookStore";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<style>
+    h2:hover {
+        color: red;
+    }
+    }
+</style>
+
+<div class="container">
+    <h2 style="font-style:normal;">HiHi Book Store</h2>
+    <div style="margin-bottom:20px;margin-top:20px;" class="row product-container">
+        @foreach (var item in Model.ListOfBooks)
+        {
+            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+                <div class="thumbnail product-item" style="height:400px">
+
+                    <img class="img-responsive" title="Click to details"
+                         style="cursor:pointer; height:260px; width:100%"
+                         src="~/Contents/images/@item.Images" />
+
+                    <div class="caption">
+                        <h5>@item.BookName</h5>
+                        <p>@item.Price.00 $</p>
+                        <p>
+                            @if (item.Quantity > 0)
+                            {
+                                using (Html.BeginForm("AddToCart", "Home", new { bookId = item.BookID, url = "Index" }, FormMethod.Post))
+                                {
+                                    <button type="submit" class="pull-right"><img src="~/Contents/images/addtocart.png" style="width:20px;height:20px;" /></button>
+                                }
+                            <p>Available</p>
+                        }
+                        else
+                        {
+                            <p>Not Available</p>
+                        }
+                            </p>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+    </div>
+</div>
